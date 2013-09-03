@@ -16,11 +16,13 @@ class Lake
         end
       end
     end
+    res
   end
 
   private
   def search_and_mark(x, y)
     return false unless new_water?(x,y)
+    @checked[y][x] = true
     search_and_mark(x-1, y-1)
     search_and_mark(x  , y-1)
     search_and_mark(x+1, y-1)
@@ -35,7 +37,7 @@ class Lake
   def new_water?(x, y)
     return false if x < 0 || x >= @x
     return false if y < 0 || y >= @y
-    !@checked[x][y] && @map[x][y] == WATER
+    !@checked[y][x] && @map[y][x] == WATER
   end
 
   def generate_member_vals
@@ -45,6 +47,6 @@ class Lake
       s.chars.to_a
     end
     # 走査済みかどうか
-    @checked = Array.new(@x).map{Array.new(@y, false)}
+    @checked = Array.new(@y).map{Array.new(@x, false)}
   end
 end
