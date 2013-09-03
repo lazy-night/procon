@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 class Lake
   WATER = 'W'
+  LAND = '.'
 
   def initialize(input)
     @input = input
@@ -22,22 +23,23 @@ class Lake
   private
   def search_and_mark(x, y)
     return false unless new_water?(x,y)
-    @checked[y][x] = true
-    search_and_mark(x-1, y-1)
-    search_and_mark(x  , y-1)
-    search_and_mark(x+1, y-1)
-    search_and_mark(x-1, y  )
-    search_and_mark(x+1, y  )
-    search_and_mark(x-1, y+1)
-    search_and_mark(x  , y+1)
-    search_and_mark(x+1, y+1)
+    mark(x, y)
+    (x-1..x+1).each do |i|
+      (y-1..y+1).each do |j|
+        search_and_mark(i, j)
+      end
+    end
     true
   end
 
   def new_water?(x, y)
     return false if x < 0 || x >= @x
     return false if y < 0 || y >= @y
-    !@checked[y][x] && @map[y][x] == WATER
+    @map[y][x] == WATER
+  end
+
+  def mark(x, y)
+    @map[y][x] = LAND
   end
 
   def generate_member_vals
@@ -46,7 +48,5 @@ class Lake
     @map = array.map do |s|
       s.chars.to_a
     end
-    # 走査済みかどうか
-    @checked = Array.new(@y).map{Array.new(@x, false)}
   end
 end
