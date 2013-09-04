@@ -1,7 +1,7 @@
 // [TODO]パッケージは適宜変更してください
 package example;
 
-public class ProCon003 {
+public class ProCon004 {
 	static final int coinTypeNum = 6;							// コイン種類枚数
 	static final int[] coinType = { 1, 5, 10, 50, 100, 500 };	// コイン種類
 	static int[] arrayInput = new int[coinTypeNum];				// コイン枚数設定限界値
