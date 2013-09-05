@@ -19,10 +19,10 @@ describe Scheduling, "#calc" do
   end
 
   it 'returns 4 when n=7, s=[1,1,2,4,6,8,2,4,8,9,1,5] t=[10,3,5,7,9,10,3,5,10,2,8]' do
-    n = 9
     #                       X X X X
     s = [1, 1,2,4,6, 8,2,4, 9,1,3,5]
     t = [10,3,5,7,9,10,3,5,10,2,4,8]
+    n = s.count
     scheduling = Scheduling.new n, s, t
     scheduling.calc.should eq(4)
   end
