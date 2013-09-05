@@ -115,29 +115,34 @@ public class ProCon003 {
 		// 現在の場所を通れないようにする
 		arrayInputCopy[x][y] = 'X';
 		
+		// 上下左右 X座標, Y座標
+		int xPoint[] = new int[]{x, x, x - 1, x + 1};
+		int yPoint[] = new int[]{y - 1, y + 1, y, y};
+		
+		// 上下左右の値設定
+		char[] topBottomLeftRight = new char[]{'X', 'X', 'X', 'X'};
+		if (y - 1 >= 0) topBottomLeftRight[0] = arrayInputCopy[x][y - 1];
+		if (y + 1 <  M) topBottomLeftRight[1] = arrayInputCopy[x][y + 1];
+		if (x - 1 >= 0) topBottomLeftRight[2] = arrayInputCopy[x - 1][y];
+		if (x + 1 <  N) topBottomLeftRight[3] = arrayInputCopy[x + 1][y];
+		
 		// 上下左右に値('G')があるかの判定
-		if ((x - 1 >= 0 && arrayInputCopy[x - 1][y] == 'G')
-			|| (x + 1 <  N && arrayInputCopy[x + 1][y] == 'G')
-			|| (y - 1 >= 0 && arrayInputCopy[x][y - 1] == 'G')
-			|| (y + 1 <  M && arrayInputCopy[x][y + 1] == 'G')) return count + 1;
+		for (int i = 0; i < 4; i++) 
+			if (topBottomLeftRight[i] == 'G')  return count + 1;
 		
 		// 初期値に-1を設定し、'G'にたどり着かない場合は-1を返す
 		int[] arrayCount = new int[] {-1, -1, -1, -1};
 		// 上下左右に値('.')があるかの判定
 		// '.'だった場合、その先へ行ったと仮定して、再帰的に経路をカウントする
-		if (x - 1 >= 0 && arrayInputCopy[x - 1][y] == '.')
-			arrayCount[0] = getShortestPath(x - 1, y, count + 1, arrayInputCopy);
-		if (x + 1 <  N && arrayInputCopy[x + 1][y] == '.')
-			arrayCount[1] = getShortestPath(x + 1, y, count + 1, arrayInputCopy);
-		if (y - 1 >= 0 && arrayInputCopy[x][y - 1] == '.')
-			arrayCount[2] = getShortestPath(x, y - 1, count + 1, arrayInputCopy);
-		if (y + 1 <  M && arrayInputCopy[x][y + 1] == '.')
-			arrayCount[3] = getShortestPath(x, y + 1, count + 1, arrayInputCopy);
+		for (int i = 0; i < 4; i++) 
+			if (topBottomLeftRight[i] == '.')
+				arrayCount[i] = getShortestPath(xPoint[i], yPoint[i], count + 1, arrayInputCopy);
 		
 		// 最短経路を調べる
 		int tmp = Integer.MAX_VALUE;
 		for (int i = 0; i < 4; i++) 
-			if (-1 != arrayCount[i] && tmp > arrayCount[i]) tmp = arrayCount[i];
+			if (-1 != arrayCount[i] && tmp > arrayCount[i])
+				tmp = arrayCount[i];
 		if (tmp == Integer.MAX_VALUE) tmp = -1;
 		
 		return tmp;
