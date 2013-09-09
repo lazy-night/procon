@@ -24,25 +24,28 @@ class Cow
 
   # なんかうまく書けなかった
   def send_some(first, last)
-    if first == last
-      if (@head - @tail >= @old_line.count)
-        send_head
-        reset_index
-      else
-        @head += 1
-        @tail -= 1
-      end
-    elsif first < last
-      (@head+1).times do
-        send_head
-        reset_index
-      end
-    else # first > last
-      (-@tail).times do
-        send_tail
-        reset_index
-      end
+    if first < last || force_send_needed?(first, last)
+      send_head
+      reset_index
+      return
+    elsif first > last
+      send_tail
+      reset_index
+      return
     end
+
+    # first == last && !head_eq_tail?
+    @head += 1
+    @tail -= 1
+  end
+
+  # メソッド化してわかりにくくなってないか？
+  def force_send_needed?(first, last)
+    first == last && head_eq_tail?
+  end
+
+  def head_eq_tail?
+    @head - @tail >= @old_line.count
   end
 
   def send_head
