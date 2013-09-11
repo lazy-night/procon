@@ -1,25 +1,15 @@
-// [TODO]パッケージは適宜変更してください
-package example;
+package procon;
 
 public class ProCon004 {
-	static final int coinTypeNum = 6;							// コイン種類枚数
-	static final int[] coinType = { 1, 5, 10, 50, 100, 500 };	// コイン種類
-	static int[] arrayInput = new int[coinTypeNum];				// コイン枚数設定限界値
-	static int[] arrayExpectancy = new int[coinTypeNum];		// コイン枚数予測値
-	static int A;												// 設定金額
+	static final int coinTypeNum = 6;								// コイン種類枚数
+	static final int[] coinType  = { 1, 5, 10, 50, 100, 500 };		// コイン種類
+	static int[] arrayInput      = new int[]{10, 1, 5, 5, 4, 2};	// コイン枚数設定限界値
+	static int[] arrayExpectancy = new int[coinTypeNum];			// コイン枚数予測値
+	static int A                 = 1456;							// 設定金額
 
 	public static void main(String[] args) {
-		// 初期値
-		arrayInput[0] = 10;	// 1円枚数
-		arrayInput[1] = 1;	// 5円枚数
-		arrayInput[2] = 5;	// 10円枚数
-		arrayInput[3] = 5;	// 50円枚数
-		arrayInput[4] = 4;	// 100円枚数
-		arrayInput[5] = 2;	// 500円枚数
-		A = 1456;			// 設定金額
-
 		// 調査対象配列番号
-		int target = 5;
+		int target = coinTypeNum - 1;
 		
 		minCoins(target);
 		while (bool_forecastVerification(target)){
@@ -37,7 +27,6 @@ public class ProCon004 {
 	 */
 	public static void minCoins(int target) {
 		int rest = A;
-
 		for (int i = target; i >= 0; i--) {
 			arrayExpectancy[i] = rest / coinType[i];
 			rest = A % coinType[i];

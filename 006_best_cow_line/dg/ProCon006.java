@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class ProCon006 {
 	static int numberOfCow = 6;
-	static char[] cowLine = new char[]{'A', 'C', 'D', 'B', 'C', 'B'};
+	static char[] cowLine  = new char[]{'A', 'C', 'D', 'B', 'C', 'B'};
 	static ArrayList<Character> arrayCowLine    = new ArrayList<Character>();
 	static ArrayList<Character> arrayNewCowLine = new ArrayList<Character>();
 
@@ -37,7 +37,7 @@ public class ProCon006 {
 	 * 
 	 * @return 削除対象要素
 	 */
-	public static char herdFirstCow() {
+	private static char herdFirstCow() {
 		return arrayCowLine.remove(0);
 	}
 
@@ -46,7 +46,7 @@ public class ProCon006 {
 	 * 
 	 * @return 削除対象要素
 	 */
-	public static char herdLastCow() {
+	private static char herdLastCow() {
 		return arrayCowLine.remove(arrayCowLine.size() - 1);
 	}
 	
@@ -59,7 +59,7 @@ public class ProCon006 {
 	 * @return [先頭 < 後尾]  1
 	 * @return [先頭 > 後尾]  -1
 	 */
-	public static int compFirstToTail(ArrayList<Character> cowLine) {
+	private static int compFirstToTail(ArrayList<Character> cowLine) {
 		char first = cowLine.get(0);
 		char tail  = cowLine.get(cowLine.size() - 1);
 		
@@ -77,7 +77,7 @@ public class ProCon006 {
 	 * @return [先頭 < 後尾]  1
 	 * @return [先頭 > 後尾]  -1
 	 */
-	public static int compSecondToSecondFromBehind(ArrayList<Character> cowLine) {
+	private static int compSecondToSecondFromBehind(ArrayList<Character> cowLine) {
 		// 要素数が1のときはこのあとの処理を行わない
 		if(cowLine.size() == 1) return 1;
 		
@@ -99,7 +99,7 @@ public class ProCon006 {
 	/** 
 	 * 並び替え前後のリストを表示
 	 */
-	public static void displayResult() {
+	private static void displayResult() {
 		System.out.print("Old : ");
 		for(int i = 0; i < numberOfCow; i++)
 			System.out.print(cowLine[i]);
