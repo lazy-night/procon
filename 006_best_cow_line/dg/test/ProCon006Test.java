@@ -14,7 +14,7 @@ import org.junit.Test;
 
 public class ProCon006Test {
 	private StandardOutputSnatcher out = new StandardOutputSnatcher();
-	private StandardInputSnatcher in = new StandardInputSnatcher();
+	private StandardInputSnatcher in   = new StandardInputSnatcher();
 
 	@Before
 	public void before() {
@@ -55,8 +55,8 @@ public class ProCon006Test {
 				"New : AAAAAAAA");
 	}
 
-	public void proCon006_main(int numberOfCow, char[] cowLine, String expectedOld, String expectedNew) {
-		// 入力設定値
+	private void proCon006_main(int numberOfCow, char[] cowLine, String expectedOld, String expectedNew) {
+		// 初期化
 		setInit(numberOfCow, cowLine);
 		
 		// テスト対象の実行
@@ -69,7 +69,7 @@ public class ProCon006Test {
 		assertThat(actualNew, is(expectedNew));
 	}
 	
-	public static void setInit(int numberOfCow, char[] cowLine) {
+	private void setInit(int numberOfCow, char[] cowLine) {
 		ProCon006.numberOfCow     = numberOfCow;
 		ProCon006.cowLine         = cowLine;
 		ProCon006.arrayCowLine    = new ArrayList<Character>();

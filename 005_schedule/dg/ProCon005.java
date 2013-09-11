@@ -31,7 +31,7 @@ public class ProCon005 {
 	 *
 	 * @return  インデックス
 	 */
-	public static int searchArrayT_minIndex() {
+	private static int searchArrayT_minIndex() {
 		int index = 0;
 		int tmp   = Integer.MAX_VALUE;
 		
@@ -51,7 +51,7 @@ public class ProCon005 {
 	 * 
 	 * @return  重なるデータがあった場合trueを返し、再度探索する
 	 */
-	public static boolean removePairRangeOverlap(int minIndex) {
+	private static boolean removePairRangeOverlap(int minIndex) {
 		boolean flag = false;
 		ArrayList<Integer> copyS = new ArrayList<Integer>(arrayS);
 		ArrayList<Integer> copyT = new ArrayList<Integer>(arrayT);
