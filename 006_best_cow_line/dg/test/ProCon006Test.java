@@ -30,32 +30,32 @@ public class ProCon006Test {
 	
 	@Test
 	public void proCon006_mainTestData() {
-		proCon006_main_method(
+		proCon006_main(
 				6,
 				new char[]{'A', 'C', 'D', 'B', 'C', 'B'},
 				"Old : ACDBCB",
 				"New : ABCBCD");
 		
-		proCon006_main_method(
+		proCon006_main(
 				6,
 				new char[]{'A', 'C', 'B', 'B', 'C', 'A'},
 				"Old : ACBBCA",
 				"New : AACBBC");
 		
-		proCon006_main_method(
+		proCon006_main(
 				7,
 				new char[]{'A', 'C', 'C', 'D', 'B', 'C', 'A'},
 				"Old : ACCDBCA",
 				"New : AACBCCD");
 		
-		proCon006_main_method(
+		proCon006_main(
 				8,
 				new char[]{'A', 'A', 'A', 'A', 'A', 'A', 'A', 'A'},
 				"Old : AAAAAAAA",
 				"New : AAAAAAAA");
 	}
 
-	public void proCon006_main_method(int numberOfCow, char[] cowLine, String expectedOld, String expectedNew) {
+	public void proCon006_main(int numberOfCow, char[] cowLine, String expectedOld, String expectedNew) {
 		// 入力設定値
 		setInit(numberOfCow, cowLine);
 		
