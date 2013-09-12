@@ -2,6 +2,10 @@ package procon;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import lib.StandardInputSnatcher;
 import lib.StandardOutputSnatcher;
 
@@ -37,12 +41,29 @@ public class ProCon007Test {
 	}
 	
 	@Test
-	public void convertSamePlaceToMinus() {
+	public void convertSamePlaceToMinus() throws
+	NoSuchMethodException,
+	SecurityException,
+	IllegalAccessException,
+	IllegalArgumentException,
+	InvocationTargetException
+    {
 		ProCon007.n  = 8;
 		ProCon007.xn = new int[]{1, 5, 6, 9, 9, 10, 13, 20, 30, 40};
-		ProCon007.convertSamePlaceToMinus();
 		int i = 0;
 		int[] exp = new int[]{1, 5, 6, 9, -1, 10, 13, 20, 30, 40};
+		
+		Method method = ProCon007.class.getDeclaredMethod("convertSamePlaceToMinus");
+		
+		// trueをセットすることで、privateメソッドへアクセス可能となります。
+		method.setAccessible(true);
+		
+		// privateメソッドを実行します。
+		ProCon007 proCon007 = new ProCon007();
+		
+		// 第二引数以降が、メソッドの引数です。
+		method.invoke(proCon007);
+		
 		for(int tmp : ProCon007.xn) {
 			assertEquals(tmp, exp[i++]);
 		}
