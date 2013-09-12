@@ -30,6 +30,22 @@ public class ProCon007Test {
 		proCon007_main(
 				"C:\\pleiades\\workspace_Java\\junit_test\\src\\main\\java\\procon\\007_inputText\\ProCon007_input.txt",
 				new String[]{"2", "4"});
+		
+		proCon007_main(
+				"C:\\pleiades\\workspace_Java\\junit_test\\src\\main\\java\\procon\\007_inputText\\ProCon007_input2.txt",
+				new String[]{"5", "2", "4"});
+	}
+	
+	@Test
+	public void convertSamePlaceToMinus() {
+		ProCon007.n  = 8;
+		ProCon007.xn = new int[]{1, 5, 6, 9, 9, 10, 13, 20, 30, 40};
+		ProCon007.convertSamePlaceToMinus();
+		int i = 0;
+		int[] exp = new int[]{1, 5, 6, 9, -1, 10, 13, 20, 30, 40};
+		for(int tmp : ProCon007.xn) {
+			assertEquals(tmp, exp[i++]);
+		}
 	}
 
 	private void proCon007_main(String filename, String[] expected) {
