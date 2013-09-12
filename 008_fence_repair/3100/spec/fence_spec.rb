@@ -29,7 +29,7 @@ describe Fence, '#compute' do
     fence.compute.should eq 116
   end
 
-  it 'returns 155 for [3,4,5,6,7,8,9,10]' do
+  it 'returns 153 for [3,4,5,6,7,8,9,10]' do
     input = ~<<-EOS
     8
     3
@@ -42,7 +42,7 @@ describe Fence, '#compute' do
     10
     EOS
     fence = Fence.new input
-    fence.compute.should eq 155
+    fence.compute.should eq 153
   end
 
   # validate 'calc'
