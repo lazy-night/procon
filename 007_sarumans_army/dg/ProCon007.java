@@ -29,6 +29,8 @@ public class ProCon007 {
 			else {
 				xn = getParseIntPositions(elements);
 				Arrays.sort(xn);
+				convertSamePlaceToMinus();
+				Arrays.sort(xn);
 				System.out.println(getRequiredPalantirs());
 			}
 			i++;
@@ -48,6 +50,22 @@ public class ProCon007 {
 			armyPositions[i] = Integer.parseInt(elements[i]);
 		}
 		return armyPositions;
+	}
+	
+	/** 
+	 * 同じ場所にいる兵士に関して、一人を除いて場所を-1にする
+	 * (同じ場所に兵士が重複しないようにする)
+	 */
+	public static void convertSamePlaceToMinus() {
+		int tmp = xn[0];
+		for (int i = 1; i < n; i++) {
+			if(tmp == xn[i]) {
+				xn[i] = -1;
+			}
+			else {
+				tmp = xn[i];
+			}
+		}
 	}
 
 	/** 
@@ -69,14 +87,14 @@ public class ProCon007 {
 	/** 
 	 * 現在の位置から次の位置にいる兵士が指定範囲内にいるかを判定する
 	 *
-	 * @param int point  現在の位置
-	 * @param int fPoint 次の位置
+	 * @param int element  現在の要素
+	 * @param int nextPoint 次の要素の位置
 	 * 
 	 * @return true  範囲内
 	 * @return false 範囲外
 	 */
-	private static boolean isRange(int point, int fPoint) {
-		if (fPoint - point <= R)
+	private static boolean isRange(int element, int nextPoint) {
+		if ((nextPoint < n) && (xn[nextPoint] - element <= R))
 			return true;
 		else
 			return false;
@@ -89,25 +107,40 @@ public class ProCon007 {
 	 */
 	private static int calcPalantirs() {
 		int palantirs = 0;
-		for (int first = 0; first < n; first++) {
+		for (int i = 0; i < n; i++) {
+			// 重複した要素は考慮しない
+			if(xn[i] == -1) continue;
+			
 			// 魔法石加算
 			palantirs++;
 			
-			int second = first + 1;
+			// iの位置から右側に関して、石の影響が届く最も遠い人の場所を取得
+			int location = getInfluenceOfPalantir(i);
+			// 最も遠い人が影響範囲外ならば次の処理を行わない
+			if(location >= R) continue;
 			
-			// 1,2番目の要素が指定範囲内にあるか判定
-			if ((second < n) && isRange(xn[first], xn[second])) {
-				int third = second + 1;
-				
-				// 2,3番目の要素が指定範囲内にあるか判定
-				if ((third < n) && isRange(xn[second], xn[third]))
-					// 3番目の要素が指定範囲内にあるので、次は4番目の要素を調べる
-					first = third;
-				else
-					// 3番目の要素が指定範囲外にあるので、次は3番目の要素を調べる
-					first = second;
-			}
+			// 石の所持者の場所(配列番号)
+			i = i + location;
+			// 石の所持者から右側に関して、石の影響が届く最も遠い人の場所を取得
+			location = getInfluenceOfPalantir(i);
+			// 最も遠い人が影響範囲外ならば次の処理を行わない
+			if(location >= R) continue;
+			
+			// 石の所持者から石の影響が届く最も遠い人の場所(配列番号)
+			i = i + location;
 		}
 		return palantirs;
+	}
+	
+	/** 
+	 * 魔法石の影響範囲
+	 *
+	 * @return 魔法石の影響範囲内で最も遠い人の配列番号(Rの場合は配列番号なので、影響範囲外となる)
+	 */
+	private static int getInfluenceOfPalantir(int i) {
+		for(int j = 1; j < R + 1; j++)
+			if(!isRange(xn[i], i + j))
+				return j - 1;
+		return R;
 	}
 }
