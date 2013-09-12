@@ -56,7 +56,7 @@ public class ProCon007 {
 	 * 同じ場所にいる兵士に関して、一人を除いて場所を-1にする
 	 * (同じ場所に兵士が重複しないようにする)
 	 */
-	public static void convertSamePlaceToMinus() {
+	private static void convertSamePlaceToMinus() {
 		int tmp = xn[0];
 		for (int i = 1; i < n; i++) {
 			if(tmp == xn[i]) {
