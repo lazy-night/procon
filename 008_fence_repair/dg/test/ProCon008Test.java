@@ -42,11 +42,11 @@ public class ProCon008Test {
 				new int[]{5, 5, 5, 2, 5, 5},
 				"85");
 
-        // 不適切だったらお手数ですが消してください。。
+ 		// 不適切だったらお手数ですが消してください。。
 		proCon008_main(
 				8,
 				new int[]{5, 3, 10, 8, 6, 4, 7, 9},
-				"155");
+				"153");
 	}
 
 	private void proCon008_main(int N, int[] li, String expected) {
