@@ -20,7 +20,7 @@ Longest common subsequence Problem
 
 が与えられた時、
 
-    3("bcd")
+    3
 
 が答えとなる。
 
