@@ -8,8 +8,7 @@ Longest common subsequence Problem
 
 制約
 
-* 1 <= n
-* m <= 1000
+* 1 <= n, m <= 1000
 
 ## 例
 
