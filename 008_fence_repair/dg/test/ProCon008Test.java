@@ -2,6 +2,9 @@ package procon;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+
 import lib.StandardInputSnatcher;
 import lib.StandardOutputSnatcher;
 
@@ -40,9 +43,8 @@ public class ProCon008Test {
 		proCon008_main(
 				6,
 				new int[]{5, 5, 5, 2, 5, 5},
-				"85");
+				"71");
 
- 		// 不適切だったらお手数ですが消してください。。
 		proCon008_main(
 				8,
 				new int[]{5, 3, 10, 8, 6, 4, 7, 9},
@@ -64,5 +66,6 @@ public class ProCon008Test {
 	private void setInit(int N, int[] li) {
 		ProCon008.N = N;
 		ProCon008.li = li;
+		ProCon008.arrayLi = new ArrayList<Integer>();
 	}
 }
