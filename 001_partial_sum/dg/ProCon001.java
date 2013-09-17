@@ -1,4 +1,3 @@
-
 package procon;
 
 import java.util.ArrayList;
