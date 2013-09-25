@@ -1,0 +1,22 @@
+def sort_array(array, new_array)
+#   new_array = []
+  return if array.length == 0
+
+  head = array[0]
+  tail = array[-1]
+
+  if head < tail
+    array.delete_at(0)
+    new_array << head
+  elsif head > tail
+    array.delete_at(-1)
+    new_array << tail
+  else head == tail
+  end
+
+  sort_array(array, new_array)
+end
+
+new_array = []
+sort_array(["B", "A", "C", "E", "D"], new_array)
+p new_array
