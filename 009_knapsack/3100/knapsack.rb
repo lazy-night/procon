@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 class Knapsack
   Wv = Struct.new "Wv", :weight, :value
 

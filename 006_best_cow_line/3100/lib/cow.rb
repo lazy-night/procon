@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 class Cow
   def initialize(input)
     @input = input

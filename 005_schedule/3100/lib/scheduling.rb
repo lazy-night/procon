@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 class Scheduling
   Job = Struct.new('Job', :start, :end)
   def initialize(n, s, t)

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 class Longest
   StringData = Struct.new "StringData", :string, :n
   def initialize(n, m, s, t)
@@ -20,7 +19,7 @@ class Longest
   def update_line(string2_index, cache)
     result = cache.dup
     char2 = @string2.string[string2_index]
-    @string1.string.chars.with_index(1) do |char1, cache_index|
+    @string1.string.each_char.with_index(1) do |char1, cache_index|
       if char2 == char1
         # 表でいうと斜め左上に1加える
         result[cache_index] = cache[cache_index - 1] + 1

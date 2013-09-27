@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 class String
   # ヒアドキュメントをインデントして使えるようにする
   def ~

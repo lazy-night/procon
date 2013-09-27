@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 class SolverInitializeError < StandardError; end
 class CannotSolveError      < StandardError; end
 

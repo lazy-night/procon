@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 class Fence
   def initialize(input)
     lines = input.lines.to_a

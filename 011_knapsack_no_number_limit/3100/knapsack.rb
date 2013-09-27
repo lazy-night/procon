@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 class Knapsack
   Data = Struct.new 'Data', :weight, :value
   def initialize(n, wv, w)

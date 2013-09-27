@@ -1,9 +1,11 @@
-# -*- coding: utf-8 -*-
 require_relative '../lib/lake'
 
 describe Lake, '#calc' do
-  it 'returns the correct value.' do
-    input = <<EOF
+  subject { Lake.new(input).calc }
+
+  context 'with the sample.' do
+    let(:input) do
+      <<EOF
 10 12
 W........WW.
 .WWW.....WWW
@@ -16,12 +18,13 @@ W.W.W.....W.
 .W.W......W.
 ..W.......W.
 EOF
-    lake = Lake.new input
-    lake.calc.should eq(3)
+    end
+    it { should eq 3 }
   end
 
-  it 'returns the correct value.(2)' do
-    input = <<EOF
+  context 'with an another case' do
+    let(:input) do
+      <<EOF
 10 12
 W.W......WW.
 .WW...W..WWW
@@ -34,7 +37,7 @@ W.W.W.....W.
 .W.W......W.
 ..W.......W.
 EOF
-    lake = Lake.new input
-    lake.calc.should eq(6)
+    end
+    it { should eq 6 }
   end
 end

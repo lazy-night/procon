@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 class Subsum
   def initialize(n, a, k)
     @n = n

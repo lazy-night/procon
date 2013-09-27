@@ -1,10 +1,11 @@
-# -*- coding: utf-8 -*-
-
 require_relative '../lib/cow'
 
 describe Cow, '#line_up' do
-  it 'returns ' do
-    input =<<EOF
+  subject { Cow.new(input).line_up }
+
+  context 'with the sample case' do
+    let(:input) do
+      <<EOF
 6
 A
 C
@@ -13,12 +14,13 @@ B
 C
 B
 EOF
-    cow = Cow.new(input)
-    cow.line_up.should eq('ABCBCD')
+    end
+    it { should eq 'ABCBCD' }
   end
 
-  it 'returns ' do
-    input =<<EOF
+  context 'with an another case' do
+    let(:input) do
+      <<EOF
 6
 A
 C
@@ -27,12 +29,13 @@ B
 C
 A
 EOF
-    cow = Cow.new(input)
-    cow.line_up.should eq('AACBBC')
+    end
+    it { should eq 'AACBBC' }
   end
 
-  it 'returns ' do
-    input =<<EOF
+  context 'with a yet another case' do
+    let(:input) do
+      <<EOF
 7
 A
 C
@@ -42,8 +45,7 @@ B
 C
 A
 EOF
-    cow = Cow.new(input)
-    cow.line_up.should eq('AACBCCD')
+    end
+    it { should eq 'AACBCCD' }
   end
 end
-

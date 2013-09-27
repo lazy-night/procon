@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 class Lake
   WATER = 'W'
   LAND = '.'

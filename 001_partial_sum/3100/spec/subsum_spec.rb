@@ -1,29 +1,19 @@
-# -*- coding: utf-8 -*-
-
 require_relative '../lib/subsum'
 
-describe Subsum do
-  it 'returns true when n=4, a=[1,2,4,7], k=13' do
-    n = 4
-    a = [1,2,4,7]
-    k = 13
-    subsum = Subsum.new n, a, k
-    subsum.judge.should be_true
+describe Subsum, "#judge" do
+  subject { Subsum.new(n, a, k).judge }
+
+  context 'when n=4, a=[1,2,4,7] and k=13' do
+    let(:n) { 4 }
+    let(:a) { [1,2,4,7] }
+    let(:k) { 13 }
+    it { should be_true }
   end
 
-  it 'returns false when n=4, a=[1,2,4,7], k=15' do
-    n = 4
-    a = [1,2,4,7]
-    k = 15
-    subsum = Subsum.new n, a, k
-    subsum.judge.should be_false
+  context 'when n=4, a=[1,2,4,7] and k=15' do
+    let(:n) { 4 }
+    let(:a) { [1,2,4,7] }
+    let(:k) { 15 }
+    it { should be_false }
   end
-
-#  it 'returns false when n=4, a=[100, 200, 7,4,2,1, 300, 400, 500], k=15' do
-#    n = 4
-#    a = [1,2,4,7]
-#    k = 15
-#    subsum = Subsum.new n, a, k
-#    subsum.judge.should be_false
-#  end
 end

@@ -1,9 +1,11 @@
-# -*- coding: utf-8 -*-
 require_relative '../lib/maze'
 
 describe Maze, "#solve" do
-  it 'returns the correct value.' do
-    input = <<EOF
+  subject { Maze.new(input).solve }
+
+  context 'with the correct value' do
+    let(:input) do
+      <<EOF
 N=10,M=10
 
 XSXXXXXX.X
@@ -17,12 +19,13 @@ XX.XX.XXXX
 .XXXX.XXX.
 ....X...GX
 EOF
-    maze = Maze.new input
-    maze.solve.should eq(22)
+    end
+    it { should eq 22 }
   end
 
-  it 'returns the correct value.(2)' do
-    input = <<EOF
+  context 'with an another case' do
+    let(:input) do
+      <<EOF
 N=10,M=15
 
 XSXXXXXX.XXXXXX
@@ -36,7 +39,7 @@ XX.XXX.XXXXXX.X
 .XXXX.XXXXX.X..
 ....X..XG......
 EOF
-    maze = Maze.new input
-    maze.solve.should eq(32)
+    end
+    it { should eq 32 }
   end
 end

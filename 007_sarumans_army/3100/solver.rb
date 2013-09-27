@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 class Solver
   Case = Struct.new('Case', :r, :n, :positions)
   State = Struct.new('State', :unseen, :effected_pos, :stone_count)
